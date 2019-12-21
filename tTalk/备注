@@ -1,0 +1,9 @@
+客户端发送消息给服务端：
+type字段的含义:0 客户端发出登录请求 {"type":0,"account":"tzf","password":"123456"}
+              1 客户端发送聊天信息 {"type":1,"text":"哈哈哈","token":"xxxxx"}
+
+服务端发送消息给客户端：
+type字段的含义:0 服务端发出确认登录信息 {"type":0,"comfirm":1或者0,"memberList":一个当前房间内用户的列表,"token":"xxxxxx"} 1为验证成功，0为验证失败,token为验证成功后发给客户端的令牌
+             :1 通过广播发出的普通聊天信息 {"type":1,"text":data['text'],'name':user.name,'user_id':user.id}
+             :2 新的用户进入聊天室的系统提示{"type":2,'name':user.name}
+             :3 用户离开聊天室的系统提示{"type":3,'name':user.name}
